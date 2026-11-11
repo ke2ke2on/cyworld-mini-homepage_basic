@@ -2,6 +2,37 @@
   position: relative;
 }
 
+/* 달력 위의 월 이동 줄: ‹ 2022.01 › */
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: #3b87ab;
+}
+
+.calendar-month {
+  min-width: 5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.calendar-nav-button {
+  border: none;
+  background: none;
+  color: #3b87ab;
+  font: inherit;
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 0 0.6rem;
+  cursor: pointer;
+}
+
+.calendar-nav-button:hover {
+  color: #1aab8a;
+}
+
 .calendar {
   display: flex;
   align-items: center;
@@ -25,9 +56,34 @@
   align-items: center;
 }
 
+/* 날짜는 클릭할 수 있는 버튼이지만, 예전 숫자 모양 그대로 보이도록 기본 스타일을 지운다 */
 .date {
   margin-right: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
   font-size: 0.85rem;
+  color: inherit;
+  cursor: pointer;
+}
+
+.date:hover {
+  background-color: #eaf4f8;
+}
+
+/* 일기가 있는 날 */
+.date.has-diary {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* 선택한 날 (hover 규칙보다 뒤에 있어야 선택 색이 유지된다) */
+.date.selected {
+  background-color: #3b87ab;
+  color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px #3b87ab;
 }
 
 .date-red, .red { color: red; }
@@ -56,6 +112,21 @@
   font-family: "KyoboHand";
   text-align: center;
   line-height: 1.6;
+}
+
+/* 일기 본문의 줄바꿈(\n)을 그대로 보여준다 */
+.diary-contents p {
+  white-space: pre-line;
+}
+
+/* 보여줄 일기가 없을 때 */
+.diary-empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-bottom: 1rem;
+  color: #888;
+  border: 1px dashed #EDEDF0;
+  background-color: #fafafa;
 }
 
 .fa-lock {
